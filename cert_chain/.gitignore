@@ -4,3 +4,8 @@ target
 # Local settings
 .soroban
 .stellar
+
+.env
+*.log
+contracts/hello-world/wasm_hash.txt
+contracts/hello-world/contract_address.txt
