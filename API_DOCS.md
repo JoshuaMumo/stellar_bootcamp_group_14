@@ -7,6 +7,7 @@ This document outlines the backend API endpoints built with Django REST Framewor
 ```text
 http://localhost:8000/api/
 ```
+**Base URL:** `https://cert-chain-backend.onrender.com`
 
 ---
 
@@ -22,6 +23,8 @@ Authenticates an authorized university and returns JSON Web Tokens (JWT).
 | **Method** | `POST` |
 | **Authentication Required** | No |
 | **Content-Type** | `application/json` |
+
+* **Endpoint:** `POST /api/auth/login/`
 
 ### Request Body
 
