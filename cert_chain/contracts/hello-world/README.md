@@ -6,7 +6,7 @@ A decentralized application (dApp) built on the **Stellar network** using **Soro
  
 ```
 certchain/
-├── .env                          # Shared environment variables (never commit)
+├── .env                          # Shared environment variables 
 ├── smart-contract/
 │   ├── Makefile                  # Build, deploy and interact targets
 │   └── src/
