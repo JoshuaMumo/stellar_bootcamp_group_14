@@ -8,3 +8,19 @@ class CertificateProcessSerializer(serializers.ModelSerializer):
     class Meta:
         model = CertificateMetadata
         fields = ['student_name', 'student_id', 'degree_name', 'graduation_year', 'pdf_file']
+
+class CertificateMetadataRetrieveSerializer(serializers.ModelSerializer):
+    # Pull the university name directly from the related University model
+    university_name = serializers.CharField(source='issuer.university_name', read_only=True)
+
+    class Meta:
+        model = CertificateMetadata
+        # Define exactly what the employer sees. Notice we do NOT expose the internal UUID.
+        fields = [
+            'student_name', 
+            'student_id', 
+            'degree_name', 
+            'graduation_year', 
+            'university_name', 
+            'created_at'
+        ]

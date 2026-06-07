@@ -4,7 +4,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from .serializers import CertificateProcessSerializer
+from rest_framework.generics import RetrieveAPIView
+from rest_framework.permissions import AllowAny
+from .serializers import CertificateProcessSerializer, CertificateMetadataRetrieveSerializer
 from .models import CertificateMetadata
 
 def generate_pdf_hash(file_object):
@@ -51,3 +53,17 @@ class ProcessCertificateView(APIView):
             }, status=status.HTTP_201_CREATED)
             
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class CertificateMetadataView(RetrieveAPIView):
+    """
+    Allows anyone with the exact SHA-256 hash to retrieve the off-chain 
+    metadata of the certificate.
+    """
+    queryset = CertificateMetadata.objects.all()
+    serializer_class = CertificateMetadataRetrieveSerializer
+    
+    # Tell DRF to search by the hash in the URL, not the database ID
+    lookup_field = 'document_hash'
+    
+    # Employers don't need a university login to verify a document
+    permission_classes = [AllowAny]

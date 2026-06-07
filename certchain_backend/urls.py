@@ -20,7 +20,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-from api.views import ProcessCertificateView
+from api.views import ProcessCertificateView, CertificateMetadataView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +29,5 @@ urlpatterns = [
     # Endpoint to refresh an expired token
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('certificates/process/', ProcessCertificateView.as_view(), name='process_certificate'),
+    path('certificates/<str:document_hash>/metadata/', CertificateMetadataView.as_view(), name='certificate_metadata'),
 ]
