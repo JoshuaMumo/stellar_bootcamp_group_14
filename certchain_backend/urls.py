@@ -25,6 +25,7 @@ from api.views import ProcessCertificateView, CertificateMetadataView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/', include('api.urls')), 
     
     # Endpoint to refresh an expired token
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
