@@ -151,10 +151,12 @@ SIMPLE_JWT = {
 }
 
 # Allow the local React server and the production Vercel deployment
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://your-frontend-project-name.vercel.app",
-]
+#CORS_ALLOWED_ORIGINS = [
+#    "http://localhost:3000",
+#    "https://your-frontend-project-name.vercel.app",
+#]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 # If you are passing JWTs in headers, ensure this is True
 CORS_ALLOW_CREDENTIALS = True
