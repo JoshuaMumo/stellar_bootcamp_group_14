@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.generics import RetrieveAPIView, ListAPIView
 from rest_framework.permissions import AllowAny
 from .serializers import CertificateProcessSerializer, CertificateMetadataRetrieveSerializer
 from .models import CertificateMetadata
@@ -67,3 +67,10 @@ class CertificateMetadataView(RetrieveAPIView):
     
     # Employers don't need a university login to verify a document
     permission_classes = [AllowAny]
+
+class UniversityCertificateListView(ListAPIView):
+    serializer_class = CertificateMetadataRetrieveSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return CertificateMetadata.objects.filter(issuer=self.request.user).order_by('-created_at')

@@ -169,6 +169,25 @@ GET /api/certificates/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b78
 7. Metadata Retrieved from Off-Chain Storage
 ```
 
+
+### List Issued Certificates (Students)
+Retrieves a list of all students and certificates issued by the authenticated university.
+
+* **Endpoint:** `GET /api/certificates/`
+* **Auth Required:** Yes (`Authorization: Bearer <access_token>`)
+
+**Success Response (200 OK):**
+```json
+[
+  {
+    "student_name": "Jane Doe",
+    "student_id": "CS-2026-002",
+    "degree_name": "BSc. Computer Science",
+    "graduation_year": 2026,
+    "university_name": "Maseno University",
+    "created_at": "2026-06-07T10:30:00Z"
+  }
+]
 ---
 
 # Status Codes Summary
