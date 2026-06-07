@@ -74,3 +74,21 @@ class UniversityCertificateListView(ListAPIView):
 
     def get_queryset(self):
         return CertificateMetadata.objects.filter(issuer=self.request.user).order_by('-created_at')
+    
+class StudentCertificateListView(ListAPIView):
+    """
+    Retrieves all certificates issued to a specific student by the 
+    authenticated university.
+    """
+    serializer_class = CertificateMetadataRetrieveSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # Extract the student_id from the URL path parameters
+        student_id = self.kwargs.get('student_id')
+        
+        # Filter by both the authenticated university and the requested student ID
+        return CertificateMetadata.objects.filter(
+            issuer=self.request.user, 
+            student_id=student_id
+        ).order_by('-created_at')

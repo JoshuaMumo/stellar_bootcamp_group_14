@@ -150,6 +150,31 @@ GET /api/certificates/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b78
 }
 ```
 
+### Get Certificates by Student ID
+Retrieves a list of all certificates issued to a specific student. This is restricted to the authenticated university that issued the certificates.
+
+* **Endpoint:** `GET /api/students/<student_id>/certificates/`
+* **Auth Required:** Yes (`Authorization: Bearer <access_token>`)
+
+**Path Parameter:**
+* `student_id`: The university's internal identification string for the student (e.g., "CS-2026-002").
+
+**Success Response (200 OK):**
+```json
+[
+  {
+    "student_name": "Jane Doe",
+    "student_id": "CS-2026-002",
+    "degree_name": "BSc. Computer Science",
+    "graduation_year": 2026,
+    "university_name": "Maseno University",
+    "status": "ACTIVE",
+    "created_at": "2026-06-07T10:30:00Z"
+  }
+]
+
+(Note: Returns an empty array [] if no certificates match the given student ID for the authenticated university).
+
 ---
 
 # Authentication Flow
