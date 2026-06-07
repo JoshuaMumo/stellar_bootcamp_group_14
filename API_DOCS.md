@@ -30,8 +30,8 @@ Authenticates an authorized university and returns JSON Web Tokens (JWT).
 
 ```json
 {
-  "username": "maseno_admin",
-  "password": "securepassword123"
+  "username": "admin",
+  "password": "admin123"
 }
 ```
 
