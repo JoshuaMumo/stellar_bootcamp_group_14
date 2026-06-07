@@ -31,6 +31,11 @@ class CertificateMetadata(models.Model):
     Stores the off-chain data for a certificate. 
     The document_hash is the crucial link to the Soroban smart contract.
     """
+    STATUS_CHOICES = [
+        ('ACTIVE', 'Active'),
+        ('REVOKED', 'Revoked'),
+    ]
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     issuer = models.ForeignKey(University, on_delete=models.CASCADE, related_name='issued_certificates')
     
@@ -42,8 +47,16 @@ class CertificateMetadata(models.Model):
     
     # The Cryptographic Hash (Link to On-Chain Data)
     document_hash = models.CharField(max_length=64, unique=True, help_text="SHA-256 hash of the PDF")
+
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='ACTIVE',
+        help_text="Current validity status of the certificate"
+    )
     
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.student_name} - {self.degree_name} ({self.graduation_year})"
+        return f"{self.student_name} - {self.degree_name} ({self.status})"
+    
