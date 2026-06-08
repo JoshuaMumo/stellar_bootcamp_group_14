@@ -75,6 +75,7 @@ Receives the student's metadata and PDF certificate, stores metadata off-chain, 
 | `student_id` | Text | CS/001/2026 |
 | `degree_name` | Text | BSc. Computer Science |
 | `graduation_year` | Number | 2026 |
+ `wallet_address` (text): e.g., "GABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890" (Stellar Public Key)
 | `pdf_file` | File | Binary PDF File |
 
 ### Example Request

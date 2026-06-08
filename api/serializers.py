@@ -7,7 +7,7 @@ class CertificateProcessSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CertificateMetadata
-        fields = ['student_name', 'student_id', 'degree_name', 'graduation_year', 'pdf_file']
+        fields = ['student_name', 'student_id', 'degree_name', 'graduation_year', 'pdf_file', 'wallet_address']
 
 class CertificateMetadataRetrieveSerializer(serializers.ModelSerializer):
     # Pull the university name directly from the related University model

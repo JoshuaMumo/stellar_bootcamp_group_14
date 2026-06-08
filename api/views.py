@@ -8,6 +8,7 @@ from rest_framework.generics import RetrieveAPIView, ListAPIView
 from rest_framework.permissions import AllowAny
 from .serializers import CertificateProcessSerializer, CertificateMetadataRetrieveSerializer
 from .models import CertificateMetadata
+from .soroban import submit_hash_to_contract
 
 def generate_pdf_hash(file_object):
     """Generates a SHA-256 hash from a file object."""
@@ -28,6 +29,8 @@ class ProcessCertificateView(APIView):
         if serializer.is_valid():
             # Extract the uploaded file from the validated data
             pdf_file = serializer.validated_data.pop('pdf_file')
+
+            wallet_address = serializer.validated_data.pop('wallet_address')
             
             # 1. Generate the deterministic hash
             document_hash = generate_pdf_hash(pdf_file)
@@ -39,6 +42,15 @@ class ProcessCertificateView(APIView):
                     status=status.HTTP_400_BAD_REQUEST
                 )
             
+            blockchain_success = submit_hash_to_contract(document_hash, wallet_address)
+            
+            if not blockchain_success:
+                return Response(
+                    {"error": "Blockchain transaction failed or timed out."}, 
+                    status=status.HTTP_503_SERVICE_UNAVAILABLE
+                )
+            
+
             # 3. Save the off-chain metadata linked to the authenticated university
             metadata = CertificateMetadata.objects.create(
                 issuer=request.user,
