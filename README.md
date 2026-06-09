@@ -1,4 +1,4 @@
-# 🏆 CertChain – Decentralized Student Certificate Verification System
+# 🏆 CertChain: Decentralized Student Certificate Verification System
 
 ## 📌 Overview
 CertChain is a decentralized application (dApp) built on the Stellar network using Soroban smart contracts. It solves the problem of certificate fraud by providing an immutable, cryptographically secure registry of academic credentials.
@@ -10,16 +10,15 @@ Instead of storing sensitive data on-chain, CertChain stores only SHA-256 hashes
 # 🧱 Project Structure
 
 .
-├── contracts
-│   └── hello_world
-│       ├── src
-│       │   ├── lib.rs
-│       │   └── test.rs
-│       └── Cargo.toml
-├── backend
-├── frontend
-├── Cargo.toml
+
+├── cert_chain_contract
+
+├── cert_chain_backend
+
+├── cert_chain_frontend
+
 └── README.md
+
 
 ---
 
