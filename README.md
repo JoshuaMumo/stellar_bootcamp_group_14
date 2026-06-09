@@ -261,11 +261,11 @@ npm test
 
 # 👥 Team Roles
 
-- Smart Contract & DevOps  
-- Frontend Development  
-- Backend API & Hashing  
-- Web3 Integration  
-- QA, Testing & Documentation  
+- Smart Contract & DevOps - Joshua Mumo 
+- Frontend Development  - Handla Duo
+- Backend API & Hashing  - Daniel Siro
+- Web3 Integration  - Handla Duo
+- QA, Testing & Documentation  - Kernemi Kidane
 
 ---
 
