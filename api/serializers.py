@@ -23,5 +23,6 @@ class CertificateMetadataRetrieveSerializer(serializers.ModelSerializer):
             'graduation_year', 
             'university_name',
             'status', 
+            'document_hash',
             'created_at'
         ]

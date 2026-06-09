@@ -213,6 +213,7 @@ Retrieves a list of all students and certificates issued by the authenticated un
     "graduation_year": 2026,
     "university_name": "Maseno University",
     "status": "ACTIVE",
+    "document_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "created_at": "2026-06-07T10:30:00Z"
   }
 ]
