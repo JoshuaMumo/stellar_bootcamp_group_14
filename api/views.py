@@ -12,10 +12,9 @@ from .models import CertificateMetadata
 def generate_pdf_hash(file_object):
     """Generates a SHA-256 hash from a file object."""
     sha256_hash = hashlib.sha256()
-    # CRITICAL: Reset file pointer to the beginning before reading
-    file_object.seek(0)
-    for byte_block in iter(lambda: file_object.read(4096), b""):
-        sha256_hash.update(byte_block)
+    
+    for chunk in file_object.chunks():
+        sha256_hash.update(chunk)
     return sha256_hash.hexdigest()
 
 class ProcessCertificateView(APIView):
