@@ -52,8 +52,9 @@ init:
 	  --id     $$(cat contract_address.txt) \
 	  --source-account ${SOURCE_TESTNET} \
 	  --network ${TESTNET} \
-	  --fee    ${FEE} \
-	  -- init \
+	  --inclusion-fee   ${FEE} \
+	  -- \
+	  init \
 	    --admin ${ADMIN}
 
 add-issuer:
@@ -61,7 +62,7 @@ add-issuer:
 	  --id     $$(cat contract_address.txt) \
 	  --source-account ${SOURCE_TESTNET} \
 	  --network ${TESTNET} \
-	  --fee    ${FEE} \
+	  --inclusion-fee    ${FEE} \
 	  -- add_issuer \
 	    --admin  ${ADMIN} \
 	    --issuer ${ISSUER}
@@ -71,7 +72,7 @@ remove-issuer:
 	  --id     $$(cat contract_address.txt) \
 	  --source-account ${SOURCE_TESTNET} \
 	  --network ${TESTNET} \
-	  --fee    ${FEE} \
+	  --inclusion-fee    ${FEE} \
 	  -- remove_issuer \
 	    --admin  ${ADMIN} \
 	    --issuer ${ISSUER}
@@ -83,7 +84,7 @@ issue:
 	  --id     $$(cat contract_address.txt) \
 	  --source-account ${SOURCE_TESTNET} \
 	  --network ${TESTNET} \
-	  --fee    ${FEE} \
+	  --inclusion-fee    ${FEE} \
 	  -- issue_cert \
 	    --issuer     ${ISSUER} \
 	    --hash       ${CERT_HASH} \
@@ -96,7 +97,7 @@ verify:
 	  --id     $$(cat contract_address.txt) \
 	  --source-account ${SOURCE_TESTNET} \
 	  --network ${TESTNET} \
-	  --fee    ${FEE} \
+	  --inclusion-fee    ${FEE} \
 	  -- verify \
 	    --hash ${CERT_HASH}
 
@@ -105,12 +106,12 @@ revoke:
 	  --id     $$(cat contract_address.txt) \
 	  --source-account ${SOURCE_TESTNET} \
 	  --network ${TESTNET} \
-	  --fee    ${FEE} \
+	  --inclusion-fee    ${FEE} \
 	  -- revoke_cert \
 	    --issuer ${ISSUER} \
 	    --hash   ${CERT_HASH}
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+#  Helpers 
 
 # Saves address to README automatically so the team always has the latest
 save-address:
