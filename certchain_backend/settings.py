@@ -143,7 +143,7 @@ REST_FRAMEWORK = {
 
 # SimpleJWT Configuration
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1), # Keeps you logged in for 24 hours
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=28), # Keeps you logged in for 24 hours
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
